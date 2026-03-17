@@ -82,6 +82,7 @@ body {
   /* pill sizing */
   --pill-radius: 70px;
   --pill-main-width: clamp(150px, 10vw, 182px);
+  --pill-main-size: calc(var(--pill-main-width) + 2px);
   --pill-sub-width: clamp(196px, 13vw, 236px);
   --pill-gap: clamp(10px, 1vw, 16px);
   --pill-height: clamp(98px, 7vw, 124px);
@@ -360,7 +361,7 @@ body {
   justify-self: start;
   width: 100%;
   max-width: none;
-  padding: 10px 10px 10px calc(var(--pill-main-width) + 12px);
+  padding: 10px 10px 10px calc(var(--pill-main-size) + 12px);
   text-align: left;
 }
 
@@ -370,7 +371,7 @@ body {
 .left-hint-3 {
   width: var(--pill-sub-width);
   max-width: var(--pill-sub-width);
-  margin-left: calc(var(--pill-main-width) + 12px);
+  margin-left: calc(var(--pill-main-size) + 12px);
   padding: 10px 0 0;
   text-align: center;
 }
@@ -492,15 +493,15 @@ body {
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.18);
   display: flex;
   border-radius: 999px;
-  min-height: var(--pill-main-width);
+  min-height: var(--pill-main-size);
   border-radius: var(--pill-radius);
   cursor: default;
   white-space: normal;
-  inline-size: var(--pill-main-width);
-  max-width: var(--pill-main-width);
-  block-size: var(--pill-main-width);
+  inline-size: var(--pill-main-size);
+  max-width: var(--pill-main-size);
+  block-size: var(--pill-main-size);
   aspect-ratio: 1/1;
-  flex: 0 0 var(--pill-main-width);
+  flex: 0 0 var(--pill-main-size);
   align-items: center;
   /* vertical center */
   justify-content: center;
