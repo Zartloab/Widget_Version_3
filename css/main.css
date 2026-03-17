@@ -252,6 +252,7 @@ body {
 .left-group-2,
 .left-group-3 {
   position: relative;
+  z-index: 4001;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -1254,6 +1255,8 @@ body {
   border-top-color: var(--popup-blue);
 }
 
+
+/* Cultural top-row popups should point from a sharp top corner (no triangle) */
 .popover-card[data-theme=cultural].arrow-top::after {
   border-bottom-color: var(--popup-blue);
 }
