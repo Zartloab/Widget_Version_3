@@ -67,6 +67,9 @@ body {
   --green: #3c8c49;
   --green-dark: #2d6836;
   --ink: #0e1113;
+  --popup-blue: #5f86ab;
+  --popup-orange: #c17e61;
+  --popup-green: #5b8970;
   --panel: #ffffff;
   --line: #e6ebf0;
   --focus: #000000;
@@ -673,37 +676,37 @@ body {
   border-bottom-left-radius: 0;
   display: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
-  z-index: 1000;
+  z-index: 5000;
   line-height: 1.45;
   text-align: left;
 }
 
 /* Tooltip Themes */
 .pill-blue ~ .tooltip.speech {
-  background-color: var(--blue);
+  background-color: var(--popup-blue);
   color: #fff;
 }
 
 .pill-blue ~ .tooltip.speech::after {
-  border-top-color: var(--blue);
+  border-top-color: var(--popup-blue);
 }
 
 .pill-orange ~ .tooltip.speech {
-  background-color: var(--orange);
+  background-color: var(--popup-orange);
   color: #fff;
 }
 
 .pill-orange ~ .tooltip.speech::after {
-  border-top-color: var(--orange);
+  border-top-color: var(--popup-orange);
 }
 
 .pill-green ~ .tooltip.speech {
-  background-color: var(--green);
+  background-color: var(--popup-green);
   color: #fff;
 }
 
 .pill-green ~ .tooltip.speech::after {
-  border-top-color: var(--green);
+  border-top-color: var(--popup-green);
 }
 
 .pill:hover ~ .tooltip,
@@ -1190,15 +1193,15 @@ body {
 }
 
 .popover-card[data-theme=cultural] {
-  background: #5f86ab;
+  background: var(--popup-blue);
 }
 
 .popover-card[data-theme=power] {
-  background: #bf7a5c;
+  background: var(--popup-orange);
 }
 
 .popover-card[data-theme=reciprocity] {
-  background: #5b8970;
+  background: var(--popup-green);
 }
 
 /* Popover Arrows */
@@ -1228,27 +1231,27 @@ body {
 }
 
 .popover-card[data-theme=cultural].arrow-bottom::after {
-  border-top-color: #5f86ab;
+  border-top-color: var(--popup-blue);
 }
 
 .popover-card[data-theme=cultural].arrow-top::after {
-  border-bottom-color: #5f86ab;
+  border-bottom-color: var(--popup-blue);
 }
 
 .popover-card[data-theme=power].arrow-bottom::after {
-  border-top-color: #bf7a5c;
+  border-top-color: var(--popup-orange);
 }
 
 .popover-card[data-theme=power].arrow-top::after {
-  border-bottom-color: #bf7a5c;
+  border-bottom-color: var(--popup-orange);
 }
 
 .popover-card[data-theme=reciprocity].arrow-bottom::after {
-  border-top-color: #5b8970;
+  border-top-color: var(--popup-green);
 }
 
 .popover-card[data-theme=reciprocity].arrow-top::after {
-  border-bottom-color: #5b8970;
+  border-bottom-color: var(--popup-green);
 }
 
 .close {
