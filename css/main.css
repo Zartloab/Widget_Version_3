@@ -1251,7 +1251,11 @@ body {
 
 /* Cultural top-row popups should point from a sharp top corner (no triangle) */
 .popover-card[data-theme=cultural].arrow-top::after {
-  display: none;
+  display: none !important;
+}
+
+.popover-card[data-theme=cultural].arrow-top {
+  border-top-right-radius: 0;
 }
 
 .popover-card[data-theme=cultural].arrow-top.anchor-right {
