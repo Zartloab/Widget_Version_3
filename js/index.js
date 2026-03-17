@@ -205,6 +205,7 @@
     titleEl.textContent = STAGES[stage];
     textEl.textContent = COPY[theme][stage];
     card.dataset.theme = theme;
+    card.classList.remove('anchor-left', 'anchor-right');
 
     // show to get card size
     popover.hidden = false;
@@ -225,7 +226,7 @@
     let top;
 
     if (isTopRow) {
-      top = (rDot.bottom - rMid.top) + 12 + POPOVER_SHIFT_Y;
+      top = (rDot.top - rMid.top) + (rDot.height / 2) - 6;
       card.classList.remove('arrow-bottom');
       card.classList.add('arrow-top');
     } else {
@@ -253,6 +254,15 @@
 
     // Set CSS custom property for arrow position
     card.style.setProperty('--arrow-offset', `${arrowOffset}px`);
+
+    if (isTopRow) {
+      const cardCenterX = cardLeft + (rCard.width / 2);
+      if (dotCenterX >= cardCenterX) {
+        card.classList.add('anchor-right');
+      } else {
+        card.classList.add('anchor-left');
+      }
+    }
 
     if (closeBtn) closeBtn.focus();
     document.addEventListener('keydown', onEsc);
