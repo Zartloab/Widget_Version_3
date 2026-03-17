@@ -33,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(22px, 3vw, 48px);
+  padding: clamp(12px, 1.8vw, 32px);
 }
 
 .imw,
@@ -102,11 +102,12 @@ body {
   --dash-orange: #d8aa98;
   --dash-green: #97b5a3;
   --font-shrink: 1px;
+  --framework-max-width: 860px;
   color: var(--ink);
 }
 
 .imw-panel {
-  width: min(1620px, 96vw);
+  width: min(1800px, 98vw);
   background: var(--panel);
   border-top-right-radius: 28px;
   border-top-left-radius: 5px;
@@ -120,6 +121,23 @@ body {
   height: auto;
   display: flex;
   flex-direction: column;
+}
+
+
+@media (min-width: 1200px) {
+  .imw {
+    --framework-max-width: clamp(1080px, 67vw, 1320px);
+    --pill-main-width: clamp(168px, 10.8vw, 202px);
+    --pill-main-size: calc(var(--pill-main-width) + 2px);
+    --pill-sub-width: clamp(214px, 13.8vw, 258px);
+    --pill-height: clamp(110px, 7.2vw, 132px);
+    --dot-size: clamp(62px, 4vw, 76px);
+    --row-gap: clamp(20px, 1.9vw, 32px);
+  }
+
+  .imw-title {
+    font-size: calc(clamp(21pt, 1.7vw, 28pt) - var(--font-shrink));
+  }
 }
 
 @media (max-width: 1500px) {
@@ -224,7 +242,7 @@ body {
   align-content: start;
   align-items: center;
   justify-items: center;
-  --track-width: min(100%, 860px);
+  --track-width: min(100%, var(--framework-max-width));
 }
 
 .left-group-1,
@@ -309,7 +327,7 @@ body {
   row-gap: 0;
   width: 100%;
   height: 100%;
-  --track-width: min(100%, 860px);
+  --track-width: min(100%, var(--framework-max-width));
 }
 
 .guide-top,
