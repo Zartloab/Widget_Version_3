@@ -209,6 +209,7 @@
 
     // show to get card size
     popover.hidden = false;
+    root.classList.add('imw-popover-open');
 
     // reset position to measure
     card.style.left = '0px';
@@ -270,6 +271,7 @@
 
   function closePopover({ restoreFocus = true } = {}) {
     popover.hidden = true;
+    root.classList.remove('imw-popover-open');
     clearFloatingTitle();
     clearSelectedDot();
     document.removeEventListener('keydown', onEsc);

@@ -261,6 +261,17 @@ body {
   justify-self: start;
 }
 
+
+.imw.imw-popover-open #midRow {
+  z-index: 7000;
+}
+
+.imw.imw-popover-open .left-group-1,
+.imw.imw-popover-open .left-group-2,
+.imw.imw-popover-open .left-group-3 {
+  z-index: 1 !important;
+}
+
 .left-group-1:hover,
 .left-group-2:hover,
 .left-group-3:hover,
@@ -1244,6 +1255,8 @@ body {
   border-top-color: var(--popup-blue);
 }
 
+
+/* Cultural top-row popups should point from a sharp top corner (no triangle) */
 .popover-card[data-theme=cultural].arrow-top::after {
   border-bottom-color: var(--popup-blue);
 }
