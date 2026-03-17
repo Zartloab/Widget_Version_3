@@ -706,6 +706,10 @@ body {
 .pill-blue ~ .tooltip.speech {
   background-color: var(--popup-blue);
   color: #fff;
+  top: calc(100% + 8px);
+  transform: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 48px;
 }
 
 .pill-blue ~ .tooltip.speech::after {
