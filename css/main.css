@@ -33,7 +33,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: clamp(22px, 3vw, 48px);
+  padding: clamp(12px, 1.8vw, 32px);
 }
 
 .imw,
@@ -67,13 +67,16 @@ body {
   --green: #3c8c49;
   --green-dark: #2d6836;
   --ink: #0e1113;
+  --popup-blue: #5f86ab;
+  --popup-orange: #c17e61;
+  --popup-green: #5b8970;
   --panel: #ffffff;
   --line: #e6ebf0;
   --focus: #000000;
   --muted: #bac4cf;
   --arrow-muted: #9eaab5;
   /* layout constants (single source of truth) */
-  --row-gap: clamp(20px, 2vw, 34px);
+  --row-gap: clamp(16px, 1.7vw, 28px);
   /* vertical rhythm between the 3 rows */
   --rail-width: 240px;
   /* right rail column width */
@@ -81,11 +84,12 @@ body {
   /* fixed horizontal gutter between main + rail */
   /* pill sizing */
   --pill-radius: 70px;
-  --pill-main-width: clamp(136px, 9vw, 170px);
-  --pill-sub-width: clamp(182px, 12vw, 220px);
+  --pill-main-width: clamp(150px, 10vw, 182px);
+  --pill-main-size: calc(var(--pill-main-width) + 2px);
+  --pill-sub-width: clamp(196px, 13vw, 236px);
   --pill-gap: clamp(10px, 1vw, 16px);
-  --pill-height: clamp(92px, 6.6vw, 116px);
-  --dot-size: 64px;
+  --pill-height: clamp(98px, 7vw, 124px);
+  --dot-size: 58px;
   --dot-gap: 12px;
   --hint-shift-y: clamp(-14px, -1vw, -8px);
   --row1-nudge-y: clamp(14px, 1.6vw, 22px);
@@ -100,18 +104,20 @@ body {
   --dash-blue: #8f9fb3;
   --dash-orange: #d8aa98;
   --dash-green: #97b5a3;
+  --font-shrink: 1px;
+  --framework-max-width: 860px;
   color: var(--ink);
 }
 
 .imw-panel {
-  width: min(1500px, 92vw);
+  width: min(1800px, 98vw);
   background: var(--panel);
   border-top-right-radius: 28px;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
-  padding: 12px 18px 16px;
+  padding: 12px 14px 16px;
   margin: 0 auto;
   background-color: #eee;
   min-height: 0;
@@ -120,16 +126,33 @@ body {
   flex-direction: column;
 }
 
+
+@media (min-width: 1200px) {
+  .imw {
+    --framework-max-width: clamp(1080px, 67vw, 1320px);
+    --pill-main-width: clamp(168px, 10.8vw, 202px);
+    --pill-main-size: calc(var(--pill-main-width) + 2px);
+    --pill-sub-width: clamp(214px, 13.8vw, 258px);
+    --pill-height: clamp(110px, 7.2vw, 132px);
+    --dot-size: clamp(62px, 4vw, 76px);
+    --row-gap: clamp(20px, 1.9vw, 32px);
+  }
+
+  .imw-title {
+    font-size: calc(clamp(21pt, 1.7vw, 28pt) - var(--font-shrink));
+  }
+}
+
 @media (max-width: 1500px) {
   .imw {
-    --pill-main-width: 162px;
-    --pill-sub-width: 208px;
+    --pill-main-width: 154px;
+    --pill-sub-width: 198px;
     --pill-gap: 12px;
     --pill-height: 108px;
     --gutter: 18px;
     --rail-width: 268px;
     --dot-gap: 10px;
-    --dot-size: 56px;
+    --dot-size: 52px;
     --row-gap: 28px;
     --row1-nudge-y: 20px;
     --row2-nudge-y: 0px;
@@ -140,7 +163,7 @@ body {
     white-space: normal;
   }
   .imw-label-match {
-    font-size: 12pt;
+    font-size: calc(12pt - var(--font-shrink));
   }
   .title-arrows {
     font-size: 0.82rem;
@@ -174,7 +197,7 @@ body {
   font-weight: 800;
   letter-spacing: 0.005em;
   margin: 0.7rem 0 0.8rem;
-  font-size: 18pt;
+  font-size: calc(clamp(18pt, 1.4vw, 24pt) - var(--font-shrink));
 }
 
 /* PAGE GRID */
@@ -194,7 +217,7 @@ body {
   margin: 8px 0 0;
   text-align: center;
   font-family: "Fira Sans", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 12pt;
+  font-size: calc(12pt - var(--font-shrink));
   line-height: 1.2;
   font-weight: 800;
   color: #6f7378;
@@ -222,7 +245,7 @@ body {
   align-content: start;
   align-items: center;
   justify-items: center;
-  --track-width: min(100%, 860px);
+  --track-width: min(100%, var(--framework-max-width));
 }
 
 .left-group-1,
@@ -251,7 +274,7 @@ body {
   padding: 10px;
   font-family: "Inter", "Roboto", "Arial", sans-serif;
   color: #9ba6b2;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem - var(--font-shrink));
   max-width: 220px;
   line-height: 1.35;
   font-weight: 400;
@@ -294,7 +317,7 @@ body {
   padding: 10px;
   font-family: "Inter", "Roboto", "Arial", sans-serif;
   color: #9ba6b2;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem - var(--font-shrink));
   max-width: 220px;
   line-height: 1.35;
   font-weight: 400;
@@ -307,7 +330,7 @@ body {
   row-gap: 0;
   width: 100%;
   height: 100%;
-  --track-width: min(100%, 860px);
+  --track-width: min(100%, var(--framework-max-width));
 }
 
 .guide-top,
@@ -346,7 +369,7 @@ body {
   padding: 10px;
   font-family: "Inter", "Roboto", "Arial", sans-serif;
   color: #9ba6b2;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem - var(--font-shrink));
   max-width: 220px;
   line-height: 1.35;
   font-weight: 400;
@@ -359,7 +382,7 @@ body {
   justify-self: start;
   width: 100%;
   max-width: none;
-  padding: 10px 10px 10px calc(var(--pill-main-width) + 12px);
+  padding: 10px 10px 10px calc(var(--pill-main-size) + 12px);
   text-align: left;
 }
 
@@ -369,7 +392,7 @@ body {
 .left-hint-3 {
   width: var(--pill-sub-width);
   max-width: var(--pill-sub-width);
-  margin-left: calc(var(--pill-main-width) + 12px);
+  margin-left: calc(var(--pill-main-size) + 12px);
   padding: 10px 0 0;
   text-align: center;
 }
@@ -484,22 +507,22 @@ body {
   color: #fff;
   font-family: "Fira Sans", Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 800;
-  font-size: 15pt;
+  font-size: calc(clamp(13pt, 1.05vw, 15pt) - var(--font-shrink));
   line-height: 1.2;
   letter-spacing: 0.01em;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.18);
   display: flex;
   border-radius: 999px;
-  min-height: var(--pill-main-width);
+  min-height: var(--pill-main-size);
   border-radius: var(--pill-radius);
   cursor: default;
   white-space: normal;
-  inline-size: var(--pill-main-width);
-  max-width: var(--pill-main-width);
-  block-size: var(--pill-main-width);
+  inline-size: var(--pill-main-size);
+  max-width: var(--pill-main-size);
+  block-size: var(--pill-main-size);
   aspect-ratio: 1/1;
-  flex: 0 0 var(--pill-main-width);
+  flex: 0 0 var(--pill-main-size);
   align-items: center;
   /* vertical center */
   justify-content: center;
@@ -544,7 +567,7 @@ body {
   color: #fff;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 700;
-  font-size: 15pt;
+  font-size: calc(clamp(12pt, 0.95vw, 14pt) - var(--font-shrink));
   min-height: var(--pill-height);
   padding: 0 18px;
   border-radius: 999px;
@@ -564,7 +587,7 @@ body {
   color: #fff;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 700;
-  font-size: 15pt;
+  font-size: calc(clamp(12pt, 0.95vw, 14pt) - var(--font-shrink));
   min-height: var(--pill-height);
   border-radius: var(--pill-radius) 0 0 0;
   letter-spacing: 0.01em;
@@ -601,6 +624,8 @@ body {
 .pill-green {
   --main: var(--green);
   background-image: url("../assets/GreenCircle.png");
+  font-size: calc(clamp(13pt, 1.05vw, 15pt) - (var(--font-shrink) + 1px));
+  letter-spacing: 0;
 }
 
 .pill-cap-blue {
@@ -642,7 +667,7 @@ body {
   background: #e9edf1;
   color: #0e1113;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 14pt;
+  font-size: calc(14pt - var(--font-shrink));
   font-weight: 600;
   padding: 1.1rem 1.2rem 1.2rem;
   border-top-left-radius: 48px;
@@ -651,37 +676,37 @@ body {
   border-bottom-left-radius: 0;
   display: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
-  z-index: 1000;
+  z-index: 5000;
   line-height: 1.45;
   text-align: left;
 }
 
 /* Tooltip Themes */
 .pill-blue ~ .tooltip.speech {
-  background-color: var(--blue);
+  background-color: var(--popup-blue);
   color: #fff;
 }
 
 .pill-blue ~ .tooltip.speech::after {
-  border-top-color: var(--blue);
+  border-top-color: var(--popup-blue);
 }
 
 .pill-orange ~ .tooltip.speech {
-  background-color: var(--orange);
+  background-color: var(--popup-orange);
   color: #fff;
 }
 
 .pill-orange ~ .tooltip.speech::after {
-  border-top-color: var(--orange);
+  border-top-color: var(--popup-orange);
 }
 
 .pill-green ~ .tooltip.speech {
-  background-color: var(--green);
+  background-color: var(--popup-green);
   color: #fff;
 }
 
 .pill-green ~ .tooltip.speech::after {
-  border-top-color: var(--green);
+  border-top-color: var(--popup-green);
 }
 
 .pill:hover ~ .tooltip,
@@ -811,7 +836,7 @@ body {
   align-items: end;
   color: var(--arrow-muted);
   font-weight: 500;
-  font-size: 1.02rem;
+  font-size: calc(1.02rem - var(--font-shrink));
   padding-bottom: 8px;
 }
 
@@ -862,7 +887,7 @@ body {
 .col-title .label {
   display: block;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 15pt;
+  font-size: calc(clamp(12pt, 1vw, 14pt) - var(--font-shrink));
   font-weight: 700;
   line-height: 1.25;
   letter-spacing: 0.005em;
@@ -873,7 +898,7 @@ body {
 .imw-label-match {
   display: block;
   font-family: "Inter", "Roboto", "Arial", sans-serif;
-  font-size: 12pt;
+  font-size: calc(clamp(10.5pt, 0.92vw, 12pt) - var(--font-shrink));
   font-weight: 600;
   line-height: 1.25;
   letter-spacing: 0.005em;
@@ -1162,25 +1187,31 @@ body {
   margin: 0;
   color: #fff;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  font-size: 14pt;
+  font-size: calc(14pt - var(--font-shrink));
   font-weight: 700;
   line-height: 1.25;
 }
 
 .popover-card[data-theme=cultural] {
-  background: #3f79ac;
+  background: var(--popup-blue);
 }
 
 .popover-card[data-theme=power] {
-  background: #c86b52;
+  background: var(--popup-orange);
 }
 
 .popover-card[data-theme=reciprocity] {
-  background: #4a8a62;
+  background: var(--popup-green);
 }
 
 /* Popover Arrows */
 .popover-card.arrow-bottom::after {
+  content: "";
+  position: absolute;
+  left: var(--arrow-offset, 50%);
+  transform: translateX(-50%);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
   top: 100%;
   border-top: 12px solid;
   border-top-color: inherit;
@@ -1188,33 +1219,39 @@ body {
 }
 
 .popover-card.arrow-top::after {
+  content: "";
+  position: absolute;
+  left: var(--arrow-offset, 50%);
+  transform: translateX(-50%);
+  border-left: 11px solid transparent;
+  border-right: 11px solid transparent;
   bottom: 100%;
   border-bottom: 12px solid;
   border-bottom-color: inherit;
 }
 
 .popover-card[data-theme=cultural].arrow-bottom::after {
-  border-top-color: var(--blue);
+  border-top-color: var(--popup-blue);
 }
 
 .popover-card[data-theme=cultural].arrow-top::after {
-  border-bottom-color: var(--blue);
+  border-bottom-color: var(--popup-blue);
 }
 
 .popover-card[data-theme=power].arrow-bottom::after {
-  border-top-color: var(--orange);
+  border-top-color: var(--popup-orange);
 }
 
 .popover-card[data-theme=power].arrow-top::after {
-  border-bottom-color: var(--orange);
+  border-bottom-color: var(--popup-orange);
 }
 
 .popover-card[data-theme=reciprocity].arrow-bottom::after {
-  border-top-color: var(--green);
+  border-top-color: var(--popup-green);
 }
 
 .popover-card[data-theme=reciprocity].arrow-top::after {
-  border-bottom-color: var(--green);
+  border-bottom-color: var(--popup-green);
 }
 
 .close {
@@ -1262,7 +1299,7 @@ body {
   font-weight: 700;
   border-radius: 999px;
   padding: 0.55rem 1rem;
-  font-size: 1.02rem;
+  font-size: calc(1.02rem - var(--font-shrink));
   box-shadow: 0 10px 24px rgba(13, 36, 56, 0.14);
   display: inline-flex;
   align-items: center;
@@ -1295,7 +1332,7 @@ body {
 
 .note {
   color: #9ba6b2;
-  font-size: 0.95rem;
+  font-size: calc(0.95rem - var(--font-shrink));
   max-width: 220px;
   line-height: 1.35;
   font-weight: 400;
@@ -1394,7 +1431,7 @@ body {
     --row2-nudge-y: 0px;
   }
   .imw-title {
-    font-size: 16pt;
+    font-size: calc(16pt - var(--font-shrink));
   }
   .imw-panel {
     padding: 6px 10px 8px;
@@ -1418,12 +1455,12 @@ body {
   }
   .pill {
     min-height: 96px;
-    font-size: 16pt;
+    font-size: calc(16pt - var(--font-shrink));
     padding: 0 30px;
   }
   .pill-cap {
     min-height: 96px;
-    font-size: 14pt;
+    font-size: calc(14pt - var(--font-shrink));
     padding: 0 22px;
   }
 }
@@ -1504,11 +1541,11 @@ body {
     box-shadow: 0 12px 26px rgba(13, 36, 56, 0.14);
   }
   .pill {
-    font-size: 21pt;
+    font-size: calc(21pt - var(--font-shrink));
     aspect-ratio: auto;
   }
   .pill-cap {
-    font-size: 18pt;
+    font-size: calc(18pt - var(--font-shrink));
     justify-content: flex-start;
   }
   .tooltip.speech {
