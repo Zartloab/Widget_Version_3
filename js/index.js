@@ -15,13 +15,13 @@
     power: [
       "Indigenous-led and self-determined, with accountability to Indigenous people and communities.",
       "Commissioner delegates evaluation responsibilities to Indigenous Service Providers. Service Providers are primarily accountable to Indigenous people rather than the Commissioner.",
-      "Equal partnerships between Commissioners and Service Provider(s) with accountability to each other and Indigenous communities. There may be compromises in stakeholders' preferred approaches.",
+      "Equal partnerships between Commissioners and Service Providers with accountability to each other and Indigenous communities. There may be compromises in stakeholders' preferred approaches.",
       "Little engagement and no partnership with Indigenous people. Power is maintained by the Commissioner. Commissioners have no accountability to Indigenous people or organisations.",
       "No, or tokenistic, engagement with Indigenous people. Power is maintained by the Commissioner. Commissioners have no accountability to Indigenous people or organisations."
     ],
     reciprocity: [
       "An Indigenous organisation, as Commissioner, has responsibility to Indigenous people to ensure the evaluation benefits them and develops community capability.",
-      "The Indigenous Service Providers(s) have the authority to commission the evaluation. They oversee an evaluation that is of benefit to Indigenous people and incorporates capability building.",
+      "The Indigenous Service Providers have the authority to commission the evaluation. They oversee an evaluation that is of benefit to Indigenous people and incorporates capability building.",
       "Equal partnership fosters two-way learning, allowing for an understanding of commissioning evaluations that benefits the community. Also builds capability. There may be compromises in stakeholders' preferred approaches.",
       "Superficial hospitality towards the Indigenous people or Service Providers; limited benefit to the community, two-way learning, or capability building.",
       "Commissioner demonstrates little to no reciprocity/ hospitality towards the Indigenous people or Service Providers. Little benefit to the community, two-way learning, or capability building."
@@ -220,12 +220,19 @@
     // Center horizontally over dot
     let left = (rDot.left + rDot.width / 2) - (rCard.width / 2) - rMid.left;
 
-    // Always position above the dot
-    let top = (rDot.top - rMid.top) - rCard.height - 15 + POPOVER_SHIFT_Y;
+    // Prefer top-row popovers to drop down so they are never clipped.
+    const isTopRow = theme === 'cultural';
+    let top;
 
-    // Add arrow pointing down
-    card.classList.remove('arrow-top');
-    card.classList.add('arrow-bottom');
+    if (isTopRow) {
+      top = (rDot.bottom - rMid.top) + 12 + POPOVER_SHIFT_Y;
+      card.classList.remove('arrow-bottom');
+      card.classList.add('arrow-top');
+    } else {
+      top = (rDot.top - rMid.top) - rCard.height - 15 + POPOVER_SHIFT_Y;
+      card.classList.remove('arrow-top');
+      card.classList.add('arrow-bottom');
+    }
 
     // Move card slightly left, then clamp within midRow
     left += POPOVER_SHIFT_X;
