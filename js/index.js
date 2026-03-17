@@ -256,13 +256,11 @@
     // Set CSS custom property for arrow position
     card.style.setProperty('--arrow-offset', `${arrowOffset}px`);
 
-    if (isTopRow) {
-      const cardCenterX = cardLeft + (rCard.width / 2);
-      if (dotCenterX >= cardCenterX) {
-        card.classList.add('anchor-right');
-      } else {
-        card.classList.add('anchor-left');
-      }
+    const cardCenterX = cardLeft + (rCard.width / 2);
+    if (dotCenterX >= cardCenterX) {
+      card.classList.add('anchor-right');
+    } else {
+      card.classList.add('anchor-left');
     }
 
     if (closeBtn) closeBtn.focus();

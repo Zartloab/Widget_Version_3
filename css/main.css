@@ -1293,6 +1293,31 @@ body {
   border-bottom-color: var(--popup-orange);
 }
 
+
+/* Remove triangle pointers for orange/green popovers and use corner anchors */
+.popover-card[data-theme=power].arrow-bottom::after,
+.popover-card[data-theme=power].arrow-top::after,
+.popover-card[data-theme=reciprocity].arrow-bottom::after,
+.popover-card[data-theme=reciprocity].arrow-top::after {
+  display: none !important;
+}
+
+.popover-card[data-theme=power].arrow-bottom.anchor-right,
+.popover-card[data-theme=reciprocity].arrow-bottom.anchor-right {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 48px;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+}
+
+.popover-card[data-theme=power].arrow-bottom.anchor-left,
+.popover-card[data-theme=reciprocity].arrow-bottom.anchor-left {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 48px;
+  border-top-left-radius: 48px;
+  border-top-right-radius: 48px;
+}
+
 .popover-card[data-theme=reciprocity].arrow-bottom::after {
   border-top-color: var(--popup-green);
 }
