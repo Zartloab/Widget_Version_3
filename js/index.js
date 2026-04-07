@@ -227,8 +227,7 @@
     let top;
 
     if (isTopRow) {
-      const topRowGap = 6;
-      top = (rDot.top - rMid.top) + rDot.height + topRowGap;
+      top = (rDot.top - rMid.top) + (rDot.height / 2) - 6;
       card.classList.remove('arrow-bottom');
       card.classList.add('arrow-top');
     } else {
