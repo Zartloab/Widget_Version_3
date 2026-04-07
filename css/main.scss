@@ -363,7 +363,6 @@ body {
   grid-area: left5;
   align-content: center;
   justify-content: center;
-  transform: translateY(calc(var(--row3-nudge-y) + var(--row3-left-correction)));
 }
 
 .left-hint-3 {
@@ -379,11 +378,21 @@ body {
   font-weight: 400;
 }
 
-/* Keep all left hints centered under their right-side pills */
+/* Keep left hints directly under the right-side pill (Safe / Indigenous People Power / Two-Way Learning) */
 .left-hint-1,
 .left-hint-2,
 .left-hint-3 {
   justify-self: start;
+  width: 100%;
+  max-width: none;
+  padding: 10px 10px 10px calc(var(--pill-main-width) + 12px);
+  text-align: left;
+}
+
+/* Keep all left hints centered under their right-side pills */
+.left-hint-1,
+.left-hint-2,
+.left-hint-3 {
   width: var(--pill-sub-width);
   max-width: var(--pill-sub-width);
   margin-left: calc(var(--pill-main-width) + 12px);
@@ -488,10 +497,10 @@ body {
 .left-group-3 {
   position: relative;
   display: flex;
-  flex-direction: column;
   align-items: flex-start;
   width: 100%;
-  gap: 16px;
+  gap: var(--pill-gap);
+  transform: translateY(calc(var(--row3-nudge-y) + var(--row3-left-correction)));
 }
 
 .pill {
@@ -507,12 +516,12 @@ body {
   text-shadow: 0 1px 3px rgba(0, 0, 0, .28);
   -webkit-text-stroke: .35px rgba(0, 0, 0, .18);
 
-  display: block;
-  position: relative;
+  display: grid;
+  place-items: center;
   border-radius: 999px;
 
 
-  height: var(--pill-main-width);
+  min-height: var(--pill-main-width);
   border-radius: var(--pill-radius);
 
   cursor: default;
@@ -522,6 +531,12 @@ body {
   block-size: var(--pill-main-width);
   aspect-ratio: 1 / 1;
   flex: 0 0 var(--pill-main-width);
+
+
+  text-align: center;
+  line-height: 1.15;
+  text-wrap: balance;
+
 }
 
 .pill-row {
@@ -536,25 +551,6 @@ body {
   margin: 0;
   padding: 0;
   position: relative;
-}
-
-.pill-anchor {
-  position: relative;
-  inline-size: var(--pill-main-width);
-  block-size: var(--pill-main-width);
-  flex: 0 0 var(--pill-main-width);
-}
-
-.pill-label,
-.pill-cap-label {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  line-height: 1.15;
-  padding: 0 14px;
 }
 
 // .pill:focus {
@@ -580,14 +576,14 @@ body {
 
 .pill-cap {
   --accent: var(--blue-dark);
-  display: block;
-  position: relative;
+  display: grid;
+  place-items: center;
 
   color: #fff;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 700;
   font-size: 15pt;
-  height: var(--pill-height);
+  min-height: var(--pill-height);
   padding: 0 18px;
   border-radius: 999px;
   letter-spacing: .01em;
@@ -596,16 +592,20 @@ body {
   flex: 0 0 var(--pill-sub-width);
   white-space: normal;
   overflow-wrap: anywhere;
+  text-align: center;
+  line-height: 1.15;
+  text-wrap: balance;
+
 }
 
 .pill-cap-right {
-  display: block;
-  position: relative;
+  display: grid;
+  place-items: center;
   color: #fff;
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   font-weight: 700;
   font-size: 15pt;
-  height: var(--pill-height);
+  min-height: var(--pill-height);
   border-radius: var(--pill-radius) 0 0 0;
   letter-spacing: .01em;
   inline-size: var(--pill-sub-width);
@@ -613,6 +613,7 @@ body {
   flex: 0 0 var(--pill-sub-width);
   white-space: normal;
   overflow-wrap: anywhere;
+  text-align: center;
   min-width: 0 !important;
   width: 100%;
   line-height: 1.15;
@@ -675,7 +676,7 @@ body {
 /* Left tooltips */
 .tooltip.speech {
   position: absolute;
-  left: calc(100% - 22px);
+  left: calc(var(--pill-main-width) - 22px);
   top: 50%;
   transform: translateY(-50%);
   width: min(300px, calc(100vw - 40px));
@@ -1547,17 +1548,14 @@ body {
   }
 
   .pill {
-    height: 96px;
+    min-height: 96px;
     font-size: 16pt;
+    padding: 0 30px;
   }
 
   .pill-cap {
-    height: 96px;
+    min-height: 96px;
     font-size: 14pt;
-  }
-
-  .pill-label,
-  .pill-cap-label {
     padding: 0 22px;
   }
 }
@@ -1648,7 +1646,7 @@ body {
     max-width: 100%;
     block-size: auto;
     flex: 1 1 auto;
-    height: auto;
+    min-height: auto;
     padding: 16px 24px;
     box-shadow: 0 12px 26px rgba(13, 36, 56, .14);
   }
@@ -1660,13 +1658,7 @@ body {
 
   .pill-cap {
     font-size: 18pt;
-  }
-
-  .pill-label,
-  .pill-cap-label {
-    position: static;
-    display: block;
-    padding: 0;
+    justify-content: flex-start;
   }
 
   .tooltip.speech {
