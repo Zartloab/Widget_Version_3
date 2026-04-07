@@ -20,6 +20,10 @@ body {
   overflow-x: hidden;
 }
 
+html {
+  font-size: 90%;
+}
+
 body {
   margin: 0;
   min-height: 100dvh;
@@ -534,6 +538,8 @@ body {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.28);
   -webkit-text-stroke: 0.35px rgba(0, 0, 0, 0.18);
   display: flex;
+  margin: 0;
+  padding: 0;
   border-radius: 999px;
   min-height: var(--pill-main-size);
   border-radius: var(--pill-radius);
@@ -550,6 +556,8 @@ body {
   /* horizontal center */
   text-align: center;
   /* text alignment center */
+  text-wrap: balance;
+  overflow: hidden;
 }
 
 .pill-row {
@@ -599,6 +607,9 @@ body {
   white-space: normal;
   overflow-wrap: anywhere;
   text-align: center;
+  line-height: 1.18;
+  text-wrap: balance;
+  overflow: hidden;
 }
 
 .pill-cap-right {
@@ -618,6 +629,9 @@ body {
   white-space: normal;
   overflow-wrap: anywhere;
   text-align: center;
+  line-height: 1.18;
+  text-wrap: balance;
+  overflow: hidden;
   min-width: 0 !important;
   width: 100%;
 }
@@ -706,7 +720,8 @@ body {
 .pill-blue ~ .tooltip.speech {
   background-color: var(--popup-blue);
   color: #fff;
-  top: calc(100% + 8px);
+  left: 110px;
+  top: calc(var(--pill-main-size) - 26px);
   transform: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 48px;
@@ -1266,11 +1281,6 @@ body {
 }
 
 
-/* Cultural top-row popups should point from a sharp top corner (no triangle) */
-.popover-card[data-theme=cultural].arrow-top::after {
-  display: none !important;
-}
-
 .popover-card[data-theme=cultural].arrow-top {
   border-top-right-radius: 0;
 }
@@ -1297,14 +1307,6 @@ body {
   border-bottom-color: var(--popup-orange);
 }
 
-
-/* Remove triangle pointers for orange/green popovers and use corner anchors */
-.popover-card[data-theme=power].arrow-bottom::after,
-.popover-card[data-theme=power].arrow-top::after,
-.popover-card[data-theme=reciprocity].arrow-bottom::after,
-.popover-card[data-theme=reciprocity].arrow-top::after {
-  display: none !important;
-}
 
 .popover-card[data-theme=power].arrow-bottom.anchor-right,
 .popover-card[data-theme=reciprocity].arrow-bottom.anchor-right {
