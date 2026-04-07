@@ -720,10 +720,11 @@ body {
 .pill-blue ~ .tooltip.speech {
   background-color: var(--popup-blue);
   color: #fff;
-  top: 66px;
-  transform: translateY(-100%);
-  border-top-left-radius: 48px;
-  border-bottom-left-radius: 0;
+  left: 110px;
+  top: calc(100% + 8px);
+  transform: none;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 48px;
 }
 
 .pill-blue ~ .tooltip.speech::after {
