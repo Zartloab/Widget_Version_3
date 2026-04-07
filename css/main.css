@@ -577,6 +577,8 @@ body {
   overflow-wrap: anywhere;
   min-width: 0 !important;
   width: 100%;
+  line-height: 1.15;
+  text-wrap: balance;
 }
 
 .pill-blue,
