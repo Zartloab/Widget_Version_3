@@ -41,9 +41,7 @@
   const titleEl = document.getElementById('imw-popover-title');
   const textEl = document.getElementById('imw-popover-text');
   const closeBtn = popover.querySelector('[data-close]');
-  const POPOVER_SHIFT_X = -152; // negative value moves the popover card to the left
   const POPOVER_MIN_LEFT = -220; // allow a small overflow to the left of midRow
-  const POPOVER_SHIFT_Y = 38; // positive value moves the popover card downward
   const POPOVER_EDGE_GAP = 8;
 
   const titleMap = {};
@@ -227,17 +225,14 @@
     let top;
 
     if (isTopRow) {
-      top = (rDot.top - rMid.top) + (rDot.height / 2) - 6;
+      top = (rDot.top - rMid.top) - rCard.height - 10;
       card.classList.remove('arrow-bottom');
       card.classList.add('arrow-top');
     } else {
-      top = (rDot.top - rMid.top) - rCard.height - 15 + POPOVER_SHIFT_Y;
+      top = (rDot.top - rMid.top) - rCard.height - 10;
       card.classList.remove('arrow-top');
       card.classList.add('arrow-bottom');
     }
-
-    // Move card slightly left, then clamp within midRow
-    left += POPOVER_SHIFT_X;
 
     // Horizontal clamping: keep right side safe, allow extra left overflow
     left = Math.max(POPOVER_MIN_LEFT, Math.min(left, rMid.width - rCard.width - POPOVER_EDGE_GAP));
