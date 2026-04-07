@@ -721,7 +721,7 @@ body {
   background-color: var(--popup-blue);
   color: #fff;
   left: 110px;
-  top: calc(100% + 8px);
+  top: calc(var(--pill-main-size) + 2px);
   transform: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 48px;
