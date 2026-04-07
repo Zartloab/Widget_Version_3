@@ -721,7 +721,7 @@ body {
   background-color: var(--popup-blue);
   color: #fff;
   left: 110px;
-  top: calc(var(--pill-main-size) + 2px);
+  top: calc(var(--pill-main-size) - 26px);
   transform: none;
   border-top-left-radius: 0;
   border-bottom-left-radius: 48px;
@@ -1270,6 +1270,11 @@ body {
   border-bottom-color: inherit;
 }
 
+.popover-card.arrow-bottom::after,
+.popover-card.arrow-top::after {
+  display: none !important;
+}
+
 .popover-card[data-theme=cultural].arrow-bottom::after {
   border-top-color: var(--popup-blue);
 }
@@ -1280,11 +1285,6 @@ body {
   border-bottom-color: var(--popup-blue);
 }
 
-
-/* Cultural top-row popups should point from a sharp top corner (no triangle) */
-.popover-card[data-theme=cultural].arrow-top::after {
-  display: none !important;
-}
 
 .popover-card[data-theme=cultural].arrow-top {
   border-top-right-radius: 0;
@@ -1312,14 +1312,6 @@ body {
   border-bottom-color: var(--popup-orange);
 }
 
-
-/* Remove triangle pointers for orange/green popovers and use corner anchors */
-.popover-card[data-theme=power].arrow-bottom::after,
-.popover-card[data-theme=power].arrow-top::after,
-.popover-card[data-theme=reciprocity].arrow-bottom::after,
-.popover-card[data-theme=reciprocity].arrow-top::after {
-  display: none !important;
-}
 
 .popover-card[data-theme=power].arrow-bottom.anchor-right,
 .popover-card[data-theme=reciprocity].arrow-bottom.anchor-right {

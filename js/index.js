@@ -41,9 +41,7 @@
   const titleEl = document.getElementById('imw-popover-title');
   const textEl = document.getElementById('imw-popover-text');
   const closeBtn = popover.querySelector('[data-close]');
-  const POPOVER_SHIFT_X = 0; // keep card centered on the clicked dot
   const POPOVER_MIN_LEFT = 8; // keep popover visually inside the model
-  const POPOVER_SHIFT_Y = 38; // positive value moves the popover card downward
   const POPOVER_EDGE_GAP = 8;
 
   const titleMap = {};
@@ -219,49 +217,40 @@
     const rCard = card.getBoundingClientRect();
     const rMid = midRow.getBoundingClientRect(); // relative to midRow container
 
-    // Center horizontally over dot
-    let left = (rDot.left + rDot.width / 2) - (rCard.width / 2) - rMid.left;
+    const dotCenterX = (rDot.left + rDot.width / 2) - rMid.left;
+    const dotCenterY = (rDot.top + rDot.height / 2) - rMid.top;
 
-    // Prefer top-row popovers to drop down so they are never clipped.
+    // Top row opens downward from the dot edge, other rows open upward from the dot edge.
     const isTopRow = theme === 'cultural';
     let top;
+    let left;
+    let anchorSide;
+    if ((dotCenterX + rCard.width + POPOVER_EDGE_GAP) <= rMid.width) {
+      left = dotCenterX;
+      anchorSide = 'anchor-left';
+    } else {
+      left = dotCenterX - rCard.width;
+      anchorSide = 'anchor-right';
+    }
 
     if (isTopRow) {
-      top = (rDot.top - rMid.top) - rCard.height - 10;
+      top = dotCenterY;
       card.classList.remove('arrow-bottom');
       card.classList.add('arrow-top');
     } else {
-      top = (rDot.top - rMid.top) - rCard.height - 10;
+      top = dotCenterY - rCard.height;
       card.classList.remove('arrow-top');
       card.classList.add('arrow-bottom');
     }
 
-    // Keep card centered on the selected dot, then clamp within midRow
-    left += POPOVER_SHIFT_X;
-
-    // Horizontal clamping: keep right side safe, allow extra left overflow
     left = Math.max(POPOVER_MIN_LEFT, Math.min(left, rMid.width - rCard.width - POPOVER_EDGE_GAP));
+    if (left === POPOVER_MIN_LEFT) anchorSide = 'anchor-left';
+    if (left === rMid.width - rCard.width - POPOVER_EDGE_GAP) anchorSide = 'anchor-right';
 
     card.style.left = left + 'px';
     card.style.top = top + 'px';
-
-    // Calculate arrow offset to point at the dot
-    // Dot center relative to midRow
-    const dotCenterX = (rDot.left + rDot.width / 2) - rMid.left;
-    // Card left position (after clamping)
-    const cardLeft = left;
-    // Arrow offset from card's left edge
-    const arrowOffset = dotCenterX - cardLeft;
-
-    // Set CSS custom property for arrow position
-    card.style.setProperty('--arrow-offset', `${arrowOffset}px`);
-
-    const cardCenterX = cardLeft + (rCard.width / 2);
-    if (dotCenterX >= cardCenterX) {
-      card.classList.add('anchor-right');
-    } else {
-      card.classList.add('anchor-left');
-    }
+    card.classList.remove('anchor-left', 'anchor-right');
+    card.classList.add(anchorSide);
 
     if (closeBtn) closeBtn.focus();
     document.addEventListener('keydown', onEsc);
