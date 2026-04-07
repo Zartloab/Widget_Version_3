@@ -227,11 +227,11 @@
     let top;
 
     if (isTopRow) {
-      top = (rDot.top - rMid.top) + (rDot.height / 2) - 6;
+      top = (rDot.top - rMid.top) - rCard.height - 10;
       card.classList.remove('arrow-bottom');
       card.classList.add('arrow-top');
     } else {
-      top = (rDot.top - rMid.top) - rCard.height - 15 + POPOVER_SHIFT_Y;
+      top = (rDot.top - rMid.top) - rCard.height - 10;
       card.classList.remove('arrow-top');
       card.classList.add('arrow-bottom');
     }
