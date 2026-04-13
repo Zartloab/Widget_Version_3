@@ -1635,3 +1635,15 @@ body {
     margin-top: 0.5rem;
   }
 }
+
+.nudge-right-1,
+.nudge-right-2,
+.nudge-right-3,
+.nudge-right-4 {
+  display: inline-block;
+}
+
+.nudge-right-1 { transform: translateX(4px); }
+.nudge-right-2 { transform: translateX(3px); }
+.nudge-right-3 { transform: translateX(6px); }
+.nudge-right-4 { transform: translateX(5px); }
